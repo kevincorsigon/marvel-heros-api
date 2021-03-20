@@ -1,0 +1,25 @@
+{
+  "name": "marvel-heros-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "@types/redis": "^2.8.28",
+    "axios": "^0.21.1",
+    "express": "^4.17.1",
+    "md5": "^2.3.0",
+    "nodemon": "^2.0.7",
+    "redis": "^3.0.2",
+    "ts-node": "^9.1.1",
+    "typescript": "^4.2.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "NODE_PATH=./build node build/index.js",
+    "build": "tsc -p .",
+    "dev": "nodemon src/index.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

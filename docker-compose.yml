@@ -1,0 +1,30 @@
+version: '3.7'
+
+services:
+  redis:
+    image: "redis:alpine"
+    hostname: redis
+    ports:
+      - "6379:6379"
+  marvel-heros-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: production
+    volumes:
+      - ./src:/home/node/app/src
+      - ./nodemon.json:/home/node/app/nodemon.json
+    container_name: marvel-heros-api
+    expose:
+      - '4000'
+    ports:
+      - '4000:4000'
+    depends_on:
+      - redis
+    command: node build/index.js 
+    environment:
+      - WAIT_HOSTS=redis:6379
+      - WAIT_HOSTS_TIMEOUT=300
+      - WAIT_SLEEP_INTERVAL=30
+      - WAIT_HOST_CONNECT_TIMEOUT=30   
+   
